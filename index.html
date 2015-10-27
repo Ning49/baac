@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>kanom</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/themes/default/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/app.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+       
+        <script type="text/javascript">
+                $(document).on("mobileinit",function(){// จะทำเหตุการณ์เมื่อ mobileinit ถูกเรียกขึ้นมา
+                   $.mobile.defaultPageTransition="flow";
+                
+            });
+            
+        </script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+        
+    </head>
+    <body>
+        <div data-role="page" id="home" data-title="Kanom" class="bg-main">
+             <div data-role="header" data-position="fixed">
+                <h1 class="page-header">Welcome </h1>
+            </div> 
+             <div data-role="content" data-position="fixed" align="center">
+                 <a href="#menu"><img src="images/my_logo.png"></a>
+                 <a href="#menu" data-role="button" data-inline="true" data-transition="slidedown" data-icon="bars" data-iconpos="right">เมนูหลัก</a>
+                  <!--<a href="#menu" data-role="button" data-inline="true" data-transition="slidedown" data-icon="bars" data-iconpos="notext">เมนูหลัก</a>-->
+            </div> 
+            <div data-role="footer" data-position="fixed"><h1>&copy; 2558</h1>
+                <a data-role="button" data-icon="tag" class="ui-btn-right" href="#aboutus" data-rel="dialog"data-transition="flow">AboutUs</a>
+            </div>   
+        </div>
+        <div data-role="page" id="menu">
+            <div data-role ="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="กลับ">
+                <h1>Main Menu</h1>
+               <!-- <a href="" data-role="button" data-rel="back" data-icon="back" data-iconpos="notext">BACK</a>-->
+                <a href="#home" data-role="button" data-rel="back" data-icon="home" data-iconpos="notext" class="ui-btn-right">HOME</a>
+            </div>
+            <div data-role="content">  
+                <div data-role="controlgroup"  class="ui-block-a">
+                <a href="#home" data-role="button" data-icon="home">หน้าหลัก</a>
+                <a href="#aboutus" data-role="button" data-icon="star">เกี่ยวกับ</a>
+                <a href="baac.html" data-role="button" data-icon="shop">สินค้า</a>
+                 <a href="test.php" data-role="button" data-icon="shop" rel="external">PHP</a>
+                 <a href="#list" data-role="button" data-icon="shop" rel="external">List</a>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed"><h1>&copy; 2558</h1>
+                <a data-role="button" data-icon="tag" class="ui-btn-right" href="#aboutus" data-rel="dialog" data-transition="flow">AboutUs</a>
+            </div>              
+        </div>
+        <div data-role="page" id="aboutus">
+            <div data-role="header">
+                <h1>About Us</h1>               
+            </div>
+            <div data-role="content">
+                <p>Hello</p>
+            </div>
+                      <div data-role="footer" data-position="fixed"><h1>&copy; 2558</h1>
+              </div>       
+        </div>
+        <section data-role="page" id="list">
+            <header data-role="header" data-theme="a">
+                <h2>List View</h2>
+             </header>   
+                <div data-role="content">
+                    <ul data-role="listview" data-inset="true" id="lv1">
+                        <li><a>Hello</a></li>
+                    </ul>
+                    <form class="ui-filterable">
+                        <input id="autoc-input" type="search">
+                    </form>
+                    <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#autoc-input" data-inset="true">
+                        <li><a>เค้กแครอท</a></li>
+                        <li><a>พายเผือก</a></li>
+                        <li><a>ปังเนย</a></li>
+                    </ul>
+                    <div data-role="collapsible-set">
+                <div data-role="collapsible">
+                    <h2>List</h2>
+                <ul data-role="listview" data-inset="false" data-autodividers="true">
+                    <li data-icon="forward"><a  href="">ขนมเค้ก</a></li>
+                    <li data-role="list-dividen">---------</li>
+                    <li><a>พาย</a></li>
+                    <li data-icon="false"><a>ขนมปัง</a></li>
+                </ul>    
+                </div>
+              <div data-role="collapsible">
+               <h2>List</h2>    
+               <ol data-role="listview" data-split-icon="plus" data-filter="true" data-filter-placeholder="Baac word">
+                   <li data-filtertext="A">
+                       <a href=""><img src="images/cupcake.jpg">
+                           <h2>ขนมเค้ก</h2>
+                           <p>เค้กแครอทเพื่อสุขภาพ</p>
+                       </a>
+                       <a href=""></a>
+                   </li>
+                   <li>
+                       <a><img src="images/pie.jpg">
+                           ขนมพาย
+                           <p class="ui-li-aside ui-li-count">15</p>
+                       </a>
+                   </li>
+                   <li><a><img src="images/bread.jpg">ขนมปัง</a></li>
+                </ol>                           
+                </div>
+                    </div>
+                </div>
+          
+        </section>
+        <script type="text/javascript">
+            var BService_url="http://172.18.27.7:8080/web_services/product_list.php";
+            $("#list").on("pageinit",function(){
+                $("#lv1 li").remove();
+            });
+            
+            $("#list").on("pagebeforeshow",function(){
+                $.getJSON(BService_url,function(data){
+                    $("#lv1 li").remove();
+                    products=data.items;
+                    $.each(products,function(index,product){
+                       $("#lv1").append("<li><a>"+product.product_name+"  : "+product.price+" บาท</a></li>"); 
+
+                    });
+                    $("#lv1").listview("refresh");
+                });
+            });
+           
+            $(document).on("pageinit","#home",function(){
+                alert("Home init");
+            });    // ถ้ามีเหตุการณ์นี้เกิดขึ้นให้ทำ ต่อไปนี้
+            $(document).on("pagebeforeshow","#home",function(){
+                alert("Home berfore Show");
+            });
+            $(document).on("pageshow","#home",function(){
+                alert("Home Show");
+            });
+            
+        </script>
+    </body>
+</html>
